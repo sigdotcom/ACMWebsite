@@ -1,1 +1,0 @@
-# Python script to connect to db
