@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import TypeWriter from  "./components/TypeWriter";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -16,9 +17,10 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ipsa odio facere quae. Ipsam commodi vitae dolor architecto debitis doloribus voluptas consectetur neque, nesciunt dicta tempore, velit quae itaque corrupti.</p>
-      <h1>Vite + React</h1>
+      </div> 
+      {/* consectetur adipisicing elit. Consectetur ipsa odio facere quae. Ipsam commodi vitae dolor architecto debitis */}
+      <p>Lorem ipsum dolor sit amet, doloribus voluptas consectetur neque, nesciunt dicta tempore, velit quae itaque corrupti.</p>
+      <h1>Powered By <TypeWriter words={["Caffeine", "+ (and)", "React"] } /></h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
