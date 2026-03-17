@@ -1,0 +1,9 @@
+asgiref==3.11.1
+Django==6.0.3
+django-cors-headers==4.9.0
+django-mongodb-backend==6.0.2
+djangorestframework==3.16.1
+dnspython==2.8.0
+pymongo==4.16.0
+python-decouple==3.8
+sqlparse==0.5.5
