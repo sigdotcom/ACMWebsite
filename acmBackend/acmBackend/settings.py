@@ -80,19 +80,16 @@ WSGI_APPLICATION = 'acmBackend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Will not execute yet, replace <user>, <password>, and <cluster> with your MongoDB credentials and cluster information
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django_mongodb_backend",
+        "NAME": "mstacm",  # your database name
+        "HOST": "mongodb+srv://<user>:<password>@<cluster>.mongodb.net",
+        "OPTIONS": {
+            "authSource": "admin",
+        },
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'acm_website',
-    #     'USER': 'your_mysql_user',
-    #     'PASSWORD': 'your_password',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # }
 }
 
 
