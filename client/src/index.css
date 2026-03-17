@@ -28,8 +28,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-image: radial-gradient(circle at center, #00008B, #001B3A);
-  /* background: linear-gradient(-45deg, #001B3A 30%, #00008B 45%, #00008B 55%, #001B3A 70%); */
+  background-image: radial-gradient(circle at center, #00008B, #001B3A); 
+  /* background: linear-gradient(-45deg, #001B3A 30%, #00008B 45%, #00008B 55%, #001B3A 70%); */ 
 
 }
 
