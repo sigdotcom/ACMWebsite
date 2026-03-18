@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:wght@400;700&display=swap');
+
+.board-title {
+    font-family: 'Victor Mono', monospace;
+    font-size: 64px;
+    margin-top: 15px;
+}
+
+.board-container {
+    background-color: #050a30;
+    /* Dark blue from your image */
+    min-height: 100vh;
+    padding: 50px 20px;
+    text-align: center;
+    color: white;
+}
+
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columns like the image */
+    gap: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.diamond-shape {
+    width: 150px;
+    height: 150px;
+    background-color: #d1d1d1;
+    margin: 0 auto 20px auto;
+    transform: rotate(45deg);
+    border-radius: 25px;
+    /* Adjust this for the "squircle" look */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.diamond-shape img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    transform:
+        rotate(-45deg) scale(1.42);
+
+
+    transform-origin: center center;
+}
+
+.member-position {
+    font-family: 'Victor Mono', monospace;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.member-name {
+    font-family: 'Victor Mono', monospace;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .board-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
