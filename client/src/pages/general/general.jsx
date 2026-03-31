@@ -4,7 +4,7 @@ import TypeWriter from "../../components/TypeWriter";
 function General() {
     return (
         <div className="general">
-            <TypeWriter words={["Balls"]} />
+            <TypeWriter words={["Caffeine"]} />
             <h1>General Page</h1>
             <p>This is the general page of the ACM website.</p>
         </div>
