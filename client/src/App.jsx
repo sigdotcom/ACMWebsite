@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import TypeWriter from "./components/TypeWriter";
+import Card from "./components/card";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -18,9 +19,11 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+
       <p>Powered by caffeine</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ipsa odio facere quae. Ipsam commodi vitae dolor architecto debitis doloribus voluptas consectetur neque, nesciunt dicta tempore, velit quae itaque corrupti.</p>
       <h1><TypeWriter words = {["Vite"]}/></h1>
+
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
