@@ -4,3 +4,7 @@ from django.db import models
 
 # comment made by me, Daniel Veit
 # hello there, coal panda x2
+
+
+#  logo
+#  sig name
