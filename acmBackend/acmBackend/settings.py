@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,8 +87,8 @@ WSGI_APPLICATION = 'acmBackend.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django_mongodb_backend",
-        "NAME": "mstacm",  # your database name
-        "HOST": "mongodb+srv://<user>:<password>@<cluster>.mongodb.net",
+        "NAME": "ACM-Website",  
+        "HOST": config("MONGODB_URI"), # Pull from .env file 
         "OPTIONS": {
             "authSource": "admin",
         },
