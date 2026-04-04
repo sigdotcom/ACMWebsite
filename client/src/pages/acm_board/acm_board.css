@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:wght@400;700&display=swap');
+
+.board-title {
+    font-family: 'Victor Mono', monospace;
+    font-size: 4rem;
+    margin-top: 0.9375rem;
+}
+
+.board-container {
+    min-height: 100vh;
+    padding: 3.125rem 1.25rem;
+    text-align: center;
+    color: white;
+}
+
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6rem 6rem;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding-top: 3.125rem;
+    overflow: visible;
+}
+
+.diamond-shape {
+    width: 11.875rem;
+    height: 11.875rem;
+    background-color: #d1d1d1;
+    margin: 0 auto 3.75rem auto;
+    transform: rotate(45deg);
+    border-radius: 1.5625rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.3);
+}
+
+.diamond-shape img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    transform:
+        rotate(-45deg) scale(1.42);
+
+
+    transform-origin: center center;
+}
+
+.member-position {
+    font-family: 'Victor Mono', monospace;
+    font-size: 1.25rem;
+    margin-top: 0.9375rem;
+}
+
+.member-name {
+    font-family: 'Victor Mono', monospace;
+    font-size: 1.50rem;
+    margin-top: 1.25rem;
+}
+
+@media (max-width: 1200px) {
+    .board-grid {
+        gap: 3rem 2rem;
+        /* Tighten the gaps */
+        max-width: 1000px;
+    }
+
+    .diamond-shape {
+        width: 10.5rem;
+        /* Shrink diamond to ~168px */
+        height: 10.5rem;
+        margin-bottom: 3.5rem;
+    }
+
+    .board-title {
+        font-size: 3.2rem;
+    }
+}
+
+/* --- Tablet (768px to 991px) --- */
+@media (max-width: 991px) {
+    .board-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Drop to 2 per row */
+        gap: 4rem 2rem;
+    }
+
+    .diamond-shape {
+        width: 11rem;
+        /* Make diamonds slightly larger again since there's more room in 2 columns */
+        height: 11rem;
+    }
+}
+
+/* --- Mobile (Below 768px) --- */
+@media (max-width: 767px) {
+    .board-grid {
+        grid-template-columns: 1fr;
+        /* 1 per row */
+        gap: 3rem;
+    }
+
+    .diamond-shape {
+        width: 9.5rem;
+        /* Smallest size for phones (~150px) */
+        height: 9.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .board-title {
+        font-size: 2.2rem;
+        padding: 0 1rem;
+    }
+
+    .member-name,
+    .member-position {
+        font-size: 1.1rem;
+        /* Slightly smaller text */
+    }
+}
