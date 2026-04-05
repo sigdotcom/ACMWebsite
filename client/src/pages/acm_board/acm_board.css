@@ -9,6 +9,8 @@
 .board-container {
     min-height: 100vh;
     padding: 3.125rem 1.25rem;
+    width: 100%;
+    margin: 0 auto;
     text-align: center;
     color: white;
 }
