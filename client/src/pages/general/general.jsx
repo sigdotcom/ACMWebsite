@@ -1,6 +1,6 @@
 import "./general.css";
 import TypeWriter from "../../components/TypeWriter";
-import ACMBoard from "../acm_board/acm_board";
+import ACMBoard from "../../components/acm_board/acm_board";
 
 function General() {
     return (
