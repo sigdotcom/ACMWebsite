@@ -6,27 +6,34 @@ from django_mongodb_backend.fields import ObjectIdAutoField
 # comment made by me, Daniel Veit
 # hello there, coal panda x2
 
+# v/ is a checkmark
+# X is a problem
+# aTODO (ignore the a) is To do
+# TBD is to be determined
+# P is in progress. Follow with - Your Name if your working on it
+# these can be changed, just my notes for now
 
-#  logo
-#  sig name
-# sigs
-#  meeting(s)
-#    time
-#    location
-#  description
-#  officers
-#    name
+# sigs P
+#  name v/
+#  logo v/ - "image"
+#  meeting(s) X - make its own class? "time" + place?
+#    time X - see events.date
+#    location TODO
+#  description v/
+#  officers TODO
+#    name 
 #    position
 #    image
-#  alumi?
-#  discord
+#  alumi? TBD
+#  discord TODO
 
-# events
-#   date
-#   location
-#   description
-#   image
-#   
+# events P
+#   sig v/
+#   date v/ - clocktime + day?
+#   location TODO
+#   description v/
+#   image v/
+#   title v/
 
 class Sig(models.Model):
     # ObjectIdAutoField maps to MongoDB's native _id field
