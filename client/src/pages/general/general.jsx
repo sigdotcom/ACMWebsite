@@ -1,6 +1,7 @@
 import "./general.css";
 import TypeWriter from "../../components/TypeWriter";
 import SigCard from "../../components/sigcard";
+import ACMBoard from "../acm_board/acm_board";
 
 function General() {
     return (
@@ -9,6 +10,7 @@ function General() {
             <h1>General Page</h1>
             <p>This is the general page of the ACM website.</p>
             <SigCard/>
+            <ACMBoard />
         </div>
     );
 }
