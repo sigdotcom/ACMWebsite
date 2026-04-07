@@ -10,6 +10,7 @@ from django_mongodb_backend.fields import ObjectIdAutoField
 # X is a problem
 # aTODO (ignore the a) is To do
 # TBD is to be determined
+# R is for review
 # P is in progress. Follow with - Your Name if your working on it
 # these can be changed, just my notes for now
 
@@ -17,10 +18,10 @@ from django_mongodb_backend.fields import ObjectIdAutoField
 #  name v/
 #  logo v/ - "image"
 #  meeting(s) X - make its own class? "time" + place?
-#    time X - see events.date
-#    location TODO
+#    time X - R - just a text field. not specifically time (12:00) or day (monday, tuesday, etc). Also, how to handle "once every two weeks" and such?
+#    location v/
 #  description v/
-#  officers TODO
+#  officers P, R - entirely separate class?
 #    name 
 #    position
 #    image
@@ -67,6 +68,7 @@ class Sig(models.Model):
 
     description = models.TextField()
     meeting_time = models.CharField(max_length=100, blank=True)
+    meeting_location = models.CharField(max_length=100, blank=True)
 
     # ImageField handles the full upload lifecycle:
     # 1. Receives the file from a form or API request
@@ -78,6 +80,14 @@ class Sig(models.Model):
 
     def __str__(self):
         return self.name
+
+class Officer(models.Model):
+    sig = models.ForeignKey(Sig, related_name='officers', on_delete=models.CASCADE) # mostly gpted. Test functionality
+
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+    #       probably not this     vvvvvvvvvvv
+    image = models.ImageField(upload_to='officers/', blank=True)
 
 
 class Event(models.Model):
