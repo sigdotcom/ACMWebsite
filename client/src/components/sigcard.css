@@ -3,31 +3,72 @@
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
-  justify-content: center;
+  justify-content: center; /* Centers the cards inside the box */
+  
+  max-width: 900px; /* Limits width to fit exactly 3 cards */
+  margin-left: auto;  /* These two lines center the box itself */
+  margin-right: auto; 
+  
+  width: 100%; /* Ensures it can grow up to 900px */
 }
-
 .sig-box {
   display: flex;
-  border: 2px solid red;
-  border-radius: 8px;
-  padding: 60px;
-  margin: 10px;
-  width: 200px;
-  height: 220px;
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
-  background-color: black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 12px;
+  padding: 25px;
+  width: 220px;
+  height: 240px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   
+  opacity: 0.85;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
-.sig-box h1{
-  margin: auto;
+
+/* Hover State */
+.sig-box:hover {
+  opacity: 1; /* Increases opacity */
+  transform: translateY(-5px) scale(1.02); 
+  border-color: rgba(255, 255, 255, 0.4); 
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
+.sig-box h1 {
+  font-size: 1.1rem;
+  color: #efefef;
+  margin-top: auto; /* Pushes text to the bottom */
+  font-family: victor-mono;
+  letter-spacing: 0.5px;
+}
 
-.hack { background: linear-gradient(#116c16 0%, #90daa4 100%); }
-.security { background: linear-gradient(#a1090e 0%, #fad0c4 100%); }
-.data { background: linear-gradient(#d4e20f 0%, #e1f08b 100%); }
-.web { background: linear-gradient(#4c4b4b 0%, #b7b5b5 100%); }
-.game { background: linear-gradient(#e6060d 0%, #fad0c4 100%); }
-.women { background: linear-gradient(#1d7bb6 0%, #9dabdd 100%); }
+.hack {
+  background: linear-gradient(180deg, #19B481 0%, rgba(255, 255, 255, 0.4) 100%);
+  border-color: #73C075;
+}
+.security { 
+  background: linear-gradient(180deg, #3B82F6 0%, rgba(255, 255, 255, 0.4) 100%);
+  border-color: #60A5FA; 
+}
 
-/* xD */
+.data { 
+  background: linear-gradient(180deg, #EAB308 0%, rgba(255, 255, 255, 0.4) 100%);
+  border-color: #FACC15; 
+}
+
+.web { 
+  background: linear-gradient(180deg, #1b1f24 0%, rgba(255, 255, 255, 0.4) 100%);
+  border-color: #94A3B8; 
+}
+
+.game { 
+  background: linear-gradient(180deg, #EF4444 0%, rgba(255, 255, 255, 0.4) 100%);
+  border-color: #F87171; 
+}
+
+.women { 
+  background: linear-gradient(180deg, #0EA5E9 0%, rgba(255, 255, 255, 0.4) 100%);
+  border-color: #38BDF8; 
+}
