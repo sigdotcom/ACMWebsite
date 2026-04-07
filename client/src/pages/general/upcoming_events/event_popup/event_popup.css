@@ -17,14 +17,10 @@
     border-radius: 12px;
     width: 90%;
     max-width: 850px;
-
-    /* Strict height rules to ensure the popup stays fixed size */
     height: 80vh;
     max-height: 600px;
-
     position: relative;
     padding: 2.5rem 2rem 2rem 2rem;
-    /* Extra top padding so content doesn't hit the 'X' */
     color: white;
     font-family: 'Victor Mono', monospace;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
@@ -43,7 +39,6 @@
     cursor: pointer;
     line-height: 1;
     z-index: 10;
-    /* Forces the 'X' to sit on top of everything else */
 }
 
 .close-btn:hover {
@@ -55,11 +50,12 @@
     gap: 2.5rem;
     height: 100%;
     overflow: hidden;
-    /* Prevents children from escaping the fixed-height container */
+    /* Keeps the layout strictly within the 600px height */
 }
 
 .popup-info {
-    flex: 1;
+    flex: 1.2;
+    /* Gives slightly more room to text if needed */
     display: flex;
     flex-direction: column;
     max-height: 100%;
@@ -81,22 +77,16 @@
     margin: 5px 0;
 }
 
-/* --- The Auto-Scrolling Description --- */
 .popup-description-container {
     flex-grow: 1;
-    /* Takes up all remaining vertical space */
     overflow-y: auto;
-    /* Spawns a scrollbar ONLY if text overflows */
     margin-bottom: 1.5rem;
     padding-right: 15px;
-    /* Adds breathing room so text doesn't touch the scrollbar */
-
-    /* Custom thin scrollbar to match your dark theme */
     scrollbar-width: thin;
     scrollbar-color: #3ca3f0 #1f1f2e;
 }
 
-/* Scrollbar styles for Webkit (Chrome/Safari) */
+/* Scrollbar styles for Webkit */
 .popup-description-container::-webkit-scrollbar {
     width: 6px;
 }
@@ -133,30 +123,26 @@
     background-color: #2b88ce;
 }
 
-/* --- Right Column: Image --- */
+/* --- Right Column: Poster Image Updated --- */
 .popup-image-wrapper {
     flex: 1;
     display: flex;
     justify-content: center;
-    /* Aligns image to the top instead of center so it stays clear of the 'X' */
-    align-items: flex-start;
-    margin-top: 15px;
-    /* Pushes the image down slightly below the 'X' */
-}
-
-.popup-image-container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    /* Centers the poster vertically in the right column */
+    height: 100%;
+    /* Spans the full height of the popup-split */
+    background-color: transparent;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .popup-image {
-    max-width: 100%;
-    max-height: 350px;
+    width: 100%;
+    height: 100%;
+    /* 'contain' ensures the whole image is visible without stretching.
+       It fills the space as much as possible while keeping its ratio.
+    */
     object-fit: contain;
     border-radius: 4px;
 }
@@ -165,25 +151,34 @@
 @media (max-width: 820px) {
     .popup-content {
         height: 90vh;
-        /* Allow it to be taller on mobile */
+        max-height: none;
+        /* Allow more height on mobile devices */
         overflow-y: auto;
-        /* Let the whole popup scroll on phones */
     }
 
     .popup-split {
         flex-direction: column;
         overflow: visible;
+        height: auto;
     }
 
     .popup-description-container {
         overflow-y: visible;
-        /* Disable inner scrolling on mobile */
+        max-height: none;
     }
 
     .popup-image-wrapper {
         order: -1;
-        /* Puts image above the text on mobile */
-        margin-top: 30px;
-        /* Extra push down from the 'X' */
+        /* Poster appears at the top on mobile */
+        height: 300px;
+        /* Fixed height for mobile view to prevent layout jump */
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .popup-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 }

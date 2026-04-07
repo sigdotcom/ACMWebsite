@@ -5,6 +5,11 @@ import './event_popup.css';
 function EventPopup({ event, onClose }) {
     if (!event) return null;
 
+    const getImagePath = (imageName) => {
+        if (imageName.startsWith('http')) return imageName;
+        return new URL(`../../../../assets/${imageName}.png`, import.meta.url).href;
+    };
+
     // Close the modal if the user clicks the dark overlay background
     const handleOverlayClick = (e) => {
         if (e.target.className === 'popup-overlay') {
@@ -61,9 +66,7 @@ function EventPopup({ event, onClose }) {
 
                     {/* Right Column: Poster Image */}
                     <div className="popup-image-wrapper">
-                        <div className="popup-image-container">
-                            <img src={event.posterImage} alt={`${event.title} poster`} className="popup-image" />
-                        </div>
+                        <img src={getImagePath(event.posterImage)} alt={`${event.title} poster`} className="popup-image" />
                     </div>
                 </div>
             </motion.div>
