@@ -34,6 +34,23 @@ from django_mongodb_backend.fields import ObjectIdAutoField
 #   description v/
 #   image v/
 #   title v/
+def sig_image_path(instance, filename):
+    # Generates: uploads/sigs/security/assets/filename.jpg
+    return f'uploads/sigs/{instance.slug}/assets/{filename}'
+
+def event_image_path(instance, filename):
+    # General events (no sig) go to uploads/general/events/
+    # Sig events go to uploads/sigs/security/events/
+    if instance.sig:
+        return f'uploads/sigs/{instance.sig.slug}/events/{filename}'
+    return f'uploads/general/events/{filename}'
+
+def attachment_path(instance, filename):
+    # Sorts PDFs by sig if one exists, otherwise general
+    if instance.sig:
+        return f'uploads/attachments/{instance.sig.slug}/{filename}'
+    return f'uploads/attachments/general/{filename}'
+
 
 class Sig(models.Model):
     # ObjectIdAutoField maps to MongoDB's native _id field
