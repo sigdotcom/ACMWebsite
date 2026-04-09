@@ -1,11 +1,14 @@
 import "./general.css";
 import TypeWriter from "../../components/TypeWriter";
-import UpcomingEvent from "./upcoming_events/upcoming_events";
+import ACMBoard from "../../components/acm_board/acm_board";
+import UpcomingEvent from "../../components/upcoming_events/upcoming_events";
 
 function General() {
     return (
         <div className="general">
-            <UpcomingEvent />
+            <TypeWriter words={["Caffeine"]} />
+            <h1>General Page</h1>
+            <p>This is the general page of the ACM website.</p>
         </div>
     );
 }

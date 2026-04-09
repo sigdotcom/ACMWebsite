@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import EventPopup from './event_popup/event_popup';
 import eventsData from './events.json';
 import './upcoming_events.css';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+
+const titleVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1.5, ease: "easeOut" },
+    },
+};
 
 function UpcomingEvent() {
     const [selectedEvent, setSelectedEvent] = useState(null);
@@ -62,9 +72,21 @@ function UpcomingEvent() {
 
     return (
         <div className="upcoming-events-section">
-            <h1 className="events-main-title">Upcoming Events</h1>
+            <motion.h1
+                className="events-main-title"
+                variants={titleVariants}
+                initial="hidden"
+                animate="visible"
+                viewport={{ once: true, amount: 0.5 }}>
+                Upcoming Events
+            </motion.h1>
 
-            <div className="carousel-wrapper">
+            <motion.div
+                className="carousel-wrapper"
+                variants={titleVariants}
+                initial="hidden"
+                animate="visible"
+                viewport={{ once: true, amount: 0.5 }}>
                 <div className="carousel-window">
                     <div
                         className="carousel-track"
@@ -94,9 +116,14 @@ function UpcomingEvent() {
                         ))}
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
-            <div className="carousel-controls">
+            <motion.div
+                className="carousel-controls"
+                variants={titleVariants}
+                initial="hidden"
+                animate="visible"
+                viewport={{ once: true, amount: 0.5 }}>
                 <button
                     className="arrow-btn"
                     onClick={handlePrev}
@@ -111,7 +138,7 @@ function UpcomingEvent() {
                 >
                     <ArrowRight size={32} strokeWidth={3} />
                 </button>
-            </div>
+            </motion.div>
 
             {selectedEvent && (
                 <EventPopup

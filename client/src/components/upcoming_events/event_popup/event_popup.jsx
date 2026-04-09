@@ -59,7 +59,7 @@ function EventPopup({ event, onClose }) {
                                 rel="noopener noreferrer"
                                 className="register-btn"
                             >
-                                Register Here
+                                Learn More
                             </a>
                         )}
                     </div>
