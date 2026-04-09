@@ -1,5 +1,6 @@
 from django.db import models
 from django_mongodb_backend.fields import ObjectIdAutoField
+from enum import Enum
 
 # Create your models here.
 
@@ -21,7 +22,7 @@ from django_mongodb_backend.fields import ObjectIdAutoField
 #    time X - R - just a text field. not specifically time (12:00) or day (monday, tuesday, etc). Also, how to handle "once every two weeks" and such?
 #    location v/
 #  description v/
-#  officers P, R - entirely separate class?
+#  officers P
 #    name 
 #    position
 #    image
@@ -35,6 +36,19 @@ from django_mongodb_backend.fields import ObjectIdAutoField
 #   description v/
 #   image v/
 #   title v/
+
+# Enum for days of the week
+class Weekday(models.TextChoices):
+    SUNDAY = "SUNDAY", 1
+    MONDAY = "MONDAY", 2
+    TUESDAY = "TUESDAY", 3
+    WEDNESDAY = "WEDNESDAY", 4
+    THURSDAY = "THURSDAY", 5
+    FRIDAY = "FRIDAY", 6
+    SATURDAY = "SATURDAY", 7
+Weekday = Enum(Weekday, [("SUNDAY", 1), ("MONDAY", 2), ("TUESDAY", 3), ("WEDNESDAY", 4), ("THURSDAY", 5), ("FRIDAY", 6), ("SATURDAY", 7)])
+
+
 def sig_image_path(instance, filename):
     # Generates: uploads/sigs/security/assets/filename.jpg
     return f'uploads/sigs/{instance.slug}/assets/{filename}'
@@ -68,6 +82,10 @@ class Sig(models.Model):
 
     description = models.TextField()
     meeting_time = models.CharField(max_length=100, blank=True)
+    meeting_day = models.CharField(max_length=11, choices=Weekday) 
+    # every_x_weeks = models.CharField(max_length=1, default=1)
+    every_x_weeks = models.IntegerField( max_length=1, default=1) 
+    # maybe models.IntegerChoices(1, 2, 3, 4, default=1, max_length=1)
     meeting_location = models.CharField(max_length=100, blank=True)
 
     # ImageField handles the full upload lifecycle:
@@ -82,10 +100,13 @@ class Sig(models.Model):
         return self.name
 
 class Officer(models.Model):
+    id = ObjectIdAutoField(primary_key=True)
+
+    # foreign key is like primary key, 
     sig = models.ForeignKey(Sig, related_name='officers', on_delete=models.CASCADE) # mostly gpted. Test functionality
 
     name = models.CharField(max_length=100)
-    position = models.CharField(max_length=100)
+    position = models.CharField(max_length=100, blank=True)
     #       probably not this     vvvvvvvvvvv
     image = models.ImageField(upload_to='officers/', blank=True)
 
@@ -99,9 +120,13 @@ class Event(models.Model):
     # on_delete=CASCADE means if a sig is deleted, all its events are deleted too
     sig = models.ForeignKey(Sig, on_delete=models.CASCADE, null=True, blank=True)
 
+    discord_url = models.URLField(max_length=100, blank=True)
+    
     title = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateTimeField()
+    location = models.CharField(max_length=100, blank=True)
+
 
     # Same ImageField pattern as Sig — uploads go to the events/ subfolder in R2
     # MongoDB stores the path, Django reconstructs the full URL when accessed
