@@ -7,7 +7,7 @@ function EventPopup({ event, onClose }) {
 
     const getImagePath = (imageName) => {
         if (imageName.startsWith('http')) return imageName;
-        return new URL(`../../../../assets/${imageName}.png`, import.meta.url).href;
+        return new URL(`../../../assets/${imageName}.png`, import.meta.url).href;
     };
 
     // Close the modal if the user clicks the dark overlay background
