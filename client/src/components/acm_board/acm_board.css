@@ -32,9 +32,15 @@
     margin: 0 auto 3.75rem auto;
     transform: rotate(45deg);
     border-radius: 1.5625rem;
+    border: none;
     overflow: hidden;
     transition: transform 0.3s ease;
     box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.3);
+}
+.diamond-shape:hover {
+    transform: rotate(45deg) scale(1.09);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.5);
+    border: hidden;
 }
 
 .diamond-shape img {

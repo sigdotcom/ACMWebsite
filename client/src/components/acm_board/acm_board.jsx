@@ -4,6 +4,7 @@ import ManavMoney from '../../assets/ManavMoney.png';
 import EthanChau from '../../assets/ethan_chau.png';
 import BenSullins from '../../assets/ben_sullins.png';
 import DheerajM from '../../assets/dheeraj_m.png';
+import robertB from '../../assets/robert.jpg'
 import './acm_board.css';
 
 const boardMembers = [
@@ -11,6 +12,7 @@ const boardMembers = [
     { name: 'Ethan Chau', position: 'Vice President', image: EthanChau },
     { name: 'Ben Sullins', position: 'Logistics Officer', image: BenSullins },
     { name: 'Dheeraj M', position: 'Treasurer', image: DheerajM },
+    { name: 'Robert Boerwinkle', position: 'STUCO Representative', image: robertB},
 ];
 
 const titleVariants = {
