@@ -4,35 +4,37 @@ from enum import Enum
 
 # Create your models here.
 
-# comment made by me, Daniel Veit
-# hello there, coal panda x2
-
+### Key/Legend
 # v/ is a checkmark
 # X is a problem
-# aTODO (ignore the a) is To do
+# TODO is To do
 # TBD is to be determined
 # R is for review
 # P is in progress. Follow with - Your Name if your working on it
 # these can be changed, just my notes for now
 
-# sigs P
+# sigs v/
 #  name v/
 #  logo v/ - "image"
-#  meeting(s) X - make its own class? "time" + place?
-#    time X - R - just a text field. not specifically time (12:00) or day (monday, tuesday, etc). Also, how to handle "once every two weeks" and such?
+#  meeting(s) v/
+#    day of week - v/
+#    time - clock v/
+#    repition - once every X weeks v/
 #    location v/
 #  description v/
-#  officers P
-#    name 
-#    position
-#    image
-#  alumi? TBD
-#  discord TODO
+#  discord v/
 
-# events P
+# officer(s) R - table of officers associated with a sig
+#  sig v/
+#  name v/
+#  position v/
+#  image R - link for officer image
+#  alumi? TBD
+
+# events v/
 #   sig v/
-#   date v/ - clocktime + day?
-#   location TODO
+#   date v/ - clocktime + day
+#   location v/
 #   description v/
 #   image v/
 #   title v/
@@ -88,6 +90,15 @@ class Sig(models.Model):
     # maybe models.IntegerChoices(1, 2, 3, 4, default=1, max_length=1)
     meeting_location = models.CharField(max_length=100, blank=True)
 
+    ## URLS (and similar)
+    # *apparently* urlfield is CharField with url validation
+    discord_url = models.URLField(max_length=200, blank=True)
+    email = models.EmailField(max_length=100, blank=True)
+    git_url = models.URLField(max_length=200, blank=True)
+    #instragram/other socials? modify: discord_url = models.URLField(max_length=200, blank=True)
+
+
+
     # ImageField handles the full upload lifecycle:
     # 1. Receives the file from a form or API request
     # 2. Sends it to Cloudflare R2 via django-storages
@@ -102,13 +113,16 @@ class Sig(models.Model):
 class Officer(models.Model):
     id = ObjectIdAutoField(primary_key=True)
 
-    # foreign key is like primary key, 
     sig = models.ForeignKey(Sig, related_name='officers', on_delete=models.CASCADE) # mostly gpted. Test functionality
 
     name = models.CharField(max_length=100)
     position = models.CharField(max_length=100, blank=True)
     #       probably not this     vvvvvvvvvvv
     image = models.ImageField(upload_to='officers/', blank=True)
+
+    def __str__(self):
+        return self.name
+
 
 
 class Event(models.Model):
