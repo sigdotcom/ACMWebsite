@@ -35,6 +35,7 @@ from django_mongodb_backend.fields import ObjectIdAutoField
 #   description v/
 #   image v/
 #   title v/
+
 def sig_image_path(instance, filename):
     # Generates: uploads/sigs/security/assets/filename.jpg
     return f'uploads/sigs/{instance.slug}/assets/{filename}'
