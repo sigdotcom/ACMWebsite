@@ -114,6 +114,29 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Tell django-storages to use S3-compatible backend
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
+# R2 connection config
+AWS_S3_ENDPOINT_URL = config("CLOUDFLARE_R2_ENDPOINT")
+AWS_ACCESS_KEY_ID = config("CLOUDFLARE_R2_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = config("CLOUDFLARE_R2_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = config("CLOUDFLARE_R2_BUCKET_NAME")
+AWS_S3_CUSTOM_DOMAIN = config("CLOUDFLARE_R2_PUBLIC_URL").replace("https://", "")
+
+# Don't let boto3 try to sign URLs — R2 public bucket doesn't need it
+AWS_QUERYSTRING_AUTH = False
+
+# Optional but good practice — organize uploads into subfolders
+AWS_LOCATION = "uploads"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
