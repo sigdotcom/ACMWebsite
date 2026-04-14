@@ -1,36 +1,42 @@
+import { useState } from "react";
 import "./sigcard.css";
+
+function FlipCard({ className, imgSrc, imgAlt, label }) {
+  const [flipped, setFlipped] = useState(false);
+
+  return (
+    <div
+      className={`card-wrapper ${flipped ? "flipped" : ""}`}
+      onClick={() => setFlipped(!flipped)}
+      style={{ perspective: "1000px" }}
+    >
+      <div className="card-inner">
+        {/* Front */}
+        <div className={`sig-box card-front ${className}`}>
+          <img src={imgSrc} alt={imgAlt} />
+          <h1>{label}</h1>
+        </div>
+        {/* Back */}
+        <div className={`sig-box card-back ${className}`}>
+          <h1>{label}</h1>
+          <p>Back content here</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function SigCard() {
   return(
-    <div className = "card-container">
-      <div className = "sig-box hack">
-        <img src="src/assets/acm_hack_logo.png" alt="ACM Hack logo" />
-        <h1>ACM Hack</h1>
-      </div>
-      <div className = "sig-box security">
-        <img src="src/assets/ACM_Security_Logo.png" alt="ACM Security logo" />
-        <h1>ACM Security</h1>
-      </div>
-      <div className = "sig-box data">
-        <img src="src/assets/ACM_AIData_Logo.png" alt="ACM AI logo" />
-        <h1>ACM AI</h1>
-      </div>
-      <div className = "sig-box web">
-        <img src="src/assets/acm_web_logo.png" alt="ACM Web logo" />
-        <h1>ACM Web</h1>
-      </div>
-      <div className = "sig-box game">
-        <img src="src/assets/acm_gamedev_logo.png" alt="ACM Game logo" />
-        <h1>ACM Game</h1>
-      </div>
-      <div className = "sig-box comp">
-        <img src="src/assets/acm_comp_logo_trans.png" alt="ACM Comp logo" />
-        <h1>ACM Comp</h1>
-      </div>
-    
+    <div className="card-container">
+      <FlipCard className="hack"     imgSrc="src/assets/acm_hack_logo.png"     imgAlt="ACM Hack logo"     label="ACM Hack"     />
+      <FlipCard className="security" imgSrc="src/assets/ACM_Security_Logo.png" imgAlt="ACM Security logo" label="ACM Security" />
+      <FlipCard className="data"     imgSrc="src/assets/ACM_AIData_Logo.png"   imgAlt="ACM AI logo"       label="ACM AI"       />
+      <FlipCard className="web"      imgSrc="src/assets/acm_web_logo.png"      imgAlt="ACM Web logo"      label="ACM Web"      />
+      <FlipCard className="game"     imgSrc="src/assets/acm_game_logo.png"     imgAlt="ACM Game logo"     label="ACM Game"     />
+      <FlipCard className="comp"     imgSrc="src/assets/acm_comp_logo.png"     imgAlt="ACM Comp logo"     label="ACM Comp"     />
     </div>
-  )
+  );
 }
-// xD
 
 export default SigCard;
