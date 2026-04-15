@@ -13,6 +13,15 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from decouple import config 
 
+# settings.py — update the imports at the top
+from django.contrib.auth.apps import AuthConfig
+from django.contrib.contenttypes.apps import ContentTypesConfig
+from django.contrib.admin.apps import AdminConfig
+
+AuthConfig.default_auto_field = 'django_mongodb_backend.fields.ObjectIdAutoField'
+ContentTypesConfig.default_auto_field = 'django_mongodb_backend.fields.ObjectIdAutoField'
+AdminConfig.default_auto_field = 'django_mongodb_backend.fields.ObjectIdAutoField'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'acmBackend',
     'core',
     'api',
 ]
@@ -61,6 +69,12 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 ROOT_URLCONF = 'acmBackend.urls'
+
+# Tells Django to use ObjectIdAutoField as the default primary key type
+# for ALL models — including Django's internal auth, admin, and contenttypes models
+# This is required when using MongoDB since AutoField (integer PKs) aren't supported
+DEFAULT_AUTO_FIELD = 'django_mongodb_backend.fields.ObjectIdAutoField'
+
 
 TEMPLATES = [
     {
@@ -155,7 +169,3 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
