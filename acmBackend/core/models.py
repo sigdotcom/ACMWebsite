@@ -133,6 +133,7 @@ class Event(models.Model):
     sig = models.ForeignKey(Sig, on_delete=models.CASCADE, null=True, blank=True)
 
     discord_url = models.URLField(max_length=100, blank=True)
+    registrationLink = models.URLField(max_length=200, blank=True)
     
     title = models.CharField(max_length=200)
     description = models.TextField()
