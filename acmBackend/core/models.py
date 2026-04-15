@@ -41,15 +41,13 @@ from enum import Enum
 
 # Enum for days of the week
 class Weekday(models.TextChoices):
-    SUNDAY = "SUNDAY", 1
-    MONDAY = "MONDAY", 2
-    TUESDAY = "TUESDAY", 3
-    WEDNESDAY = "WEDNESDAY", 4
-    THURSDAY = "THURSDAY", 5
-    FRIDAY = "FRIDAY", 6
-    SATURDAY = "SATURDAY", 7
-
-
+    SUNDAY = "SUNDAY", "Sunday"
+    MONDAY = "MONDAY", "Monday"
+    TUESDAY = "TUESDAY", "Tuesday"
+    WEDNESDAY = "WEDNESDAY", "Wednesday"
+    THURSDAY = "THURSDAY", "Thursday"
+    FRIDAY = "FRIDAY", "Friday"
+    SATURDAY = "SATURDAY", "Saturday"
 
 def sig_image_path(instance, filename):
     # Generates: uploads/sigs/security/assets/filename.jpg
