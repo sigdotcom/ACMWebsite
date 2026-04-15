@@ -1,6 +1,5 @@
 from django.db import models
 from django_mongodb_backend.fields import ObjectIdAutoField
-from enum import Enum
 
 # Create your models here.
 
@@ -41,14 +40,13 @@ from enum import Enum
 
 # Enum for days of the week
 class Weekday(models.TextChoices):
-    SUNDAY = "SUNDAY", 1
-    MONDAY = "MONDAY", 2
-    TUESDAY = "TUESDAY", 3
-    WEDNESDAY = "WEDNESDAY", 4
-    THURSDAY = "THURSDAY", 5
-    FRIDAY = "FRIDAY", 6
-    SATURDAY = "SATURDAY", 7
-Weekday = Enum(Weekday, [("SUNDAY", 1), ("MONDAY", 2), ("TUESDAY", 3), ("WEDNESDAY", 4), ("THURSDAY", 5), ("FRIDAY", 6), ("SATURDAY", 7)])
+    SUNDAY = "SUNDAY", "Sunday"
+    MONDAY = "MONDAY", "Monday"
+    TUESDAY = "TUESDAY", "Tuesday"
+    WEDNESDAY = "WEDNESDAY", "Wednesday"
+    THURSDAY = "THURSDAY", "Thursday"
+    FRIDAY = "FRIDAY", "Friday"
+    SATURDAY = "SATURDAY", "Saturday"
 
 
 def sig_image_path(instance, filename):
@@ -84,9 +82,9 @@ class Sig(models.Model):
 
     description = models.TextField()
     meeting_time = models.CharField(max_length=100, blank=True)
-    meeting_day = models.CharField(max_length=11, choices=Weekday) 
+    meeting_day = models.CharField(max_length=11, choices=Weekday)
     # every_x_weeks = models.CharField(max_length=1, default=1)
-    every_x_weeks = models.IntegerField( max_length=1, default=1) 
+    every_x_weeks = models.IntegerField(default=1)
     # maybe models.IntegerChoices(1, 2, 3, 4, default=1, max_length=1)
     meeting_location = models.CharField(max_length=100, blank=True)
 
