@@ -11,6 +11,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config 
+
+# settings.py — update the imports at the top
+from django.contrib.auth.apps import AuthConfig
+from django.contrib.contenttypes.apps import ContentTypesConfig
+from django.contrib.admin.apps import AdminConfig
+
+AuthConfig.default_auto_field = 'django_mongodb_backend.fields.ObjectIdAutoField'
+ContentTypesConfig.default_auto_field = 'django_mongodb_backend.fields.ObjectIdAutoField'
+AdminConfig.default_auto_field = 'django_mongodb_backend.fields.ObjectIdAutoField'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'acmBackend',
+    'core',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +69,12 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 ROOT_URLCONF = 'acmBackend.urls'
+
+# Tells Django to use ObjectIdAutoField as the default primary key type
+# for ALL models — including Django's internal auth, admin, and contenttypes models
+# This is required when using MongoDB since AutoField (integer PKs) aren't supported
+DEFAULT_AUTO_FIELD = 'django_mongodb_backend.fields.ObjectIdAutoField'
+
 
 TEMPLATES = [
     {
@@ -80,19 +97,16 @@ WSGI_APPLICATION = 'acmBackend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Will not execute yet, replace <user>, <password>, and <cluster> with your MongoDB credentials and cluster information
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django_mongodb_backend",
+        "NAME": "ACM-Website",  
+        "HOST": config("MONGODB_URI"), # Pull from .env file 
+        "OPTIONS": {
+            "authSource": "admin",
+        },
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'acm_website',
-    #     'USER': 'your_mysql_user',
-    #     'PASSWORD': 'your_password',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # }
 }
 
 
@@ -114,6 +128,29 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Tell django-storages to use S3-compatible backend
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
+# R2 connection config
+AWS_S3_ENDPOINT_URL = config("CLOUDFLARE_R2_ENDPOINT")
+AWS_ACCESS_KEY_ID = config("CLOUDFLARE_R2_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = config("CLOUDFLARE_R2_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = config("CLOUDFLARE_R2_BUCKET_NAME")
+AWS_S3_CUSTOM_DOMAIN = config("CLOUDFLARE_R2_PUBLIC_URL").replace("https://", "")
+
+# Don't let boto3 try to sign URLs — R2 public bucket doesn't need it
+AWS_QUERYSTRING_AUTH = False
+
+# Optional but good practice — organize uploads into subfolders
+AWS_LOCATION = "uploads"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -132,7 +169,3 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
