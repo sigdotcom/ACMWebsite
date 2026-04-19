@@ -4,6 +4,7 @@ import SigCard from "../../components/sigcard";
 
 import ACMBoard from "../../components/acm_board/acm_board";
 import UpcomingEvent from "../../components/upcoming_events/upcoming_events";
+import ImageGallery from "../../components/image_gallery/image_gallery";
 
 function General() {
     return (
@@ -11,6 +12,7 @@ function General() {
             <SigCard/>
             <UpcomingEvent />
             <ACMBoard />
+            <ImageGallery autoSwap={true}/>
         </div>
     );
 }
