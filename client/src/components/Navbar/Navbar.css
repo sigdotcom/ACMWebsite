@@ -1,0 +1,142 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Victor Mono', monospace;
+}
+
+/* NAVBAR CONTAINER */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding: 15px 20px;
+
+  background: #02011D;
+}
+/* should the navbar have its own dark background? */
+
+
+/* LEFT SIDE (logo + text) */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* LOGO IMAGE (if you add one later) */
+.nav-logo {
+  height: 45px;
+  width: auto;
+}
+
+.logo-text{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+/* ACM / TITLE */
+.acmLogo {
+  color: white;
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.tagline {
+    font-size: 15px;
+    color: white;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+}
+
+/* SCROLLING TO SECTIONS */
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 80px;
+}
+
+
+/*HAMBURGER MENU*/
+.menut-toggle{
+    display:none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* RIGHT SIDE NAV LINKS */
+.navLinks {
+  display: flex;
+  align-items: center;
+}
+
+/* LIST */
+.links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+/* LINK ITEMS */
+.links li {
+  display: flex;
+  align-items: center;
+}
+
+/* LINK TEXT */
+.links li a {
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+/* HOVER EFFECT */
+.links li a:hover {
+  opacity: 0.7;
+}
+
+/* REMOVE THIS DUPLICATE RULE (IMPORTANT) */
+/* li { margin: 0 20px; }  <-- delete this */
+
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+    /* stacking eveything vertically */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* logo + text */
+    .nav-left {
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* links go underneath */
+    .navLinks {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* stack links vertically  */
+    .links {
+        flex-direction: none;
+        align-items: center;
+        gap: 10px;
+    }
+}
