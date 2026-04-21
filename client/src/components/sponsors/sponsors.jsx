@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import './sponsors.css'
 
 import nucor from '../../assets/nucor-logo.png';
-import sandia from '../../assets/sandia-logo.png';
+import sandia from '../../assets/Sandia-resized.png';
 import wellsFargo from '../../assets/wells-fargo-logo.png';
 
 const titleVariants = {
@@ -28,7 +28,7 @@ function Sponsors () {
             </motion.h1>
             <div className="img-container">
                 <img src={nucor} alt="Nucor Logo" />
-                <img src={sandia} alt="Sandia Logo" />
+                <img src={sandia} alt="Sandia Logo" style={{backgroundColor: 'white'}}/>
                 <img src={wellsFargo} alt="Wells Fargo Logo" />
             </div>
                 
