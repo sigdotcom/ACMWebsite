@@ -1,0 +1,117 @@
+
+/*
+.header-container {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+    background-color: purple;
+    font-size: 40px;
+
+     <img src={tempHeader} alt="meeting" width="100" height="600"></img>
+*/
+
+
+.header-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* padding: 10px; */
+  /* margin: 20px; */
+  margin-top: 0;
+  padding-top: 0;
+  justify-content: center;
+
+  width: 100%;
+  height: 90vh;
+  font-family: 'Victor Mono', monospace;
+  box-sizing: border-box;
+}
+
+
+/* border: solid red; */
+.header-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 1.25rem;
+    justify-content: flex-end;
+    box-sizing: border-box;
+
+    background:
+    linear-gradient(rgba(14.1%, 14.1%, 38%, 0.85), rgba(2%, 1%, 29%, 0.85)),
+    url('../../assets/tempHeader.png') center/cover no-repeat;
+}
+
+.header-content h1 {
+    text-align: center;
+    font-size: 3.0rem;
+    margin-bottom: 20px;
+}
+
+.typewriter{
+    font-style: italic;
+}
+
+.header-content p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 10px;
+    line-height: 1.5;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding-top: 20px;
+}
+
+.buttons button {
+    background-color: #242461;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-buttons {
+    justify-content: center;
+    display: flex;
+    gap: 2rem;
+    margin-top: 20px;
+}
+
+.social-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+    background-color: #242461;
+    color: white;
+
+    font-size: 20px;
+    transition: 0.3s ease;
+}
+
+/* can get rid of transformatin! */ 
+.social-buttons a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translate(-3px);
+}
+
+/* adding color of icon on hover potentionally */
+/* do we want these to be white or actual logo colors? */
+.social-buttons a:nth-child(1):hover {background: #E1306C} /* instagram */
+.social-buttons a:nth-child(2):hover {background: #7289DA} /* discord */
+.social-buttons a:nth-child(3):hover {background: #24292E} /* git */
+.social-buttons a:nth-child(4):hover {background: #0077B5} /* linkedin */
+
