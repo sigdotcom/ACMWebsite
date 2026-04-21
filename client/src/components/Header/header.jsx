@@ -19,11 +19,7 @@ function Header() {
                 Powered by <b><TypeWriter className="typewriter" words={['The Future', 'Coffee', 'React', 'Love']}/></b>
             </h1>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-            </p>
+            <p>We are the Association for Computing Machinery at Missouri S&T. Our goal is to enrich the college experience and foster the next generation of innovators by hosting talks, competitions, and workshops. We take any and all majors interested in what we do. Checkout our SIGs to find out what might spark your interest!</p>
 
             {/* SOCIAL BUTTONS */}
             <div className='social-buttons'>
