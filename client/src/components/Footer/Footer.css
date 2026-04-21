@@ -1,0 +1,26 @@
+.footer {
+  background: black;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* container */
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* logo */
+.footer-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* text */
+.footer-text {
+  color: white;
+  font-size: 14px;
+  opacity: 0.8;
+}

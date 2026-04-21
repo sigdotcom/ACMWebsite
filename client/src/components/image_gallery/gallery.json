@@ -1,0 +1,26 @@
+[
+    {
+        "image": "src/assets/acm-logo.png",
+        "altText": "the S&T ACM logo"
+    },
+    {
+        "image": "src/assets/ben_sullins.png",
+        "altText": "Ben Sullins"
+    },
+    {
+        "image": "src/assets/dheeraj_m.png",
+        "altText": "Dheeraj M"
+    },
+    {
+        "image": "src/assets/ethan_chau.png",
+        "altText": "Ethan Chau"
+    },
+    {
+        "image": "src/assets/ManavMoney.png",
+        "altText": "Manav Money"
+    },
+    {
+        "image": "src/assets/robert.jpg",
+        "altText": "Robert"
+    }
+]
