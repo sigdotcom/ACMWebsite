@@ -11,12 +11,12 @@ import {FaDiscord, FaInstagram, FaGithub, FaLinkedin} from 'react-icons/fa';
 function Header() {
   //default style
 
-  return (
+    return (
     // navbar material
     <div className="header-container">
         <div className="header-content">
             <h1>
-                Powered by <TypeWriter className="typewriter" words={['the future', 'coffee', 'react', 'love']}/>
+                Powered by <b><TypeWriter className="typewriter" words={['The Future', 'Coffee', 'React', 'Love']}/></b>
             </h1>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -27,23 +27,23 @@ function Header() {
 
             {/* SOCIAL BUTTONS */}
             <div className='social-buttons'>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer">
+                <a href="https://www.instagram.com/mstacm?igsh=ZzJtd3dzYTQ2Y3F4" target="_blank" rel="noreferrer">
                     <FaInstagram />
                 </a>
-                <a href="https://discord.com" target="_blank" rel="noreferrer">
+                <a href="https://discord.gg/ESbRUJmFrd" target="_blank" rel="noreferrer">
                     <FaDiscord />
                 </a>
-                <a href="https://github.com" target="_blank" rel="noreferrer">
+                <a href="https://github.com/mstacm" target="_blank" rel="noreferrer">
                     <FaGithub />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/company/sandtacm/posts/?feedView=all" target="_blank" rel="noreferrer">
                     <FaLinkedin />
                 </a>
             </div>
 
         </div>
     </div>
-  );
+    );
 }
 
 export default Header;

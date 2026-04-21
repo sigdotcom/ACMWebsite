@@ -7,19 +7,25 @@
 }
 
 .board-container {
+    display: flex; 
+    flex-direction: column;
+    gap: 5rem;
     min-height: 100vh;
     padding: 3.125rem 1.25rem;
-    width: 85vw;
+    width: 100%;
+    max-width: 85%;
     margin: 0 auto;
     text-align: center;
     color: white;
+    box-sizing: border-box;
 }
 
 .board-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 2rem 4rem;
-    max-width: 80vw;
+    gap: 2.5rem 11rem;
+    justify-items: space-between;
+    max-width: 100%;
     margin: 0 auto;
     padding-top: 3.125rem;
     overflow: visible;

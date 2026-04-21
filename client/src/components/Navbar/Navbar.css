@@ -13,8 +13,11 @@
 
   width: 100%;
   padding: 15px 20px;
+  padding-bottom: 0;
+  box-sizing: border-box;
 
-  background: #02011D;
+  /* background: #02011D; */
+  background: transparent;
 }
 /* should the navbar have its own dark background? */
 
