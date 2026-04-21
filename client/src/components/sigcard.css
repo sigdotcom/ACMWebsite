@@ -1,31 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:wght@400;700&display=swap');
+
+.sigcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+}
+.sigcard h1{
+    font-family: 'Victor Mono', monospace;
+    font-size: 4rem;
+    margin-top: 0.9375rem;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
+  gap: 30px;
+  padding: 40px;
   justify-content: center;
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.card-wrapper {
+  width: 19rem;
+  height: 22rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card-wrapper:not(.flipped):hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s ease;
+  transform-origin: center center;
+}
+
+.card-wrapper.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.card-back p {
+  color: #efefef;
+  font-family: victor-mono;
+  font-size: 1.0rem;
+  text-align: center;
+  padding: 0 10px;
 }
 
 .sig-box {
+  box-sizing: border-box;
   display: flex;
-  border: 2px solid red;
-  border-radius: 8px;
-  padding: 60px;
-  margin: 10px;
-  width: 200px;
-  height: 220px;
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
-  background-color: black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 12px;
+  padding: 25px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  opacity: 0.85;
+  transition: opacity 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Makes it so that the contents in the sig-box are flipped */
+.sig-box:not(.flipped){
+  justify-content: flex-start;
+}
+
+.card-wrapper:not(.flipped):hover .sig-box {
+  opacity: 1;
   
-}
-.sig-box h1{
-  margin: auto;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
+.sig-box h1 {
+  font-size: 1.5rem;
+  color: #efefef;
+  font-family: 'Victor Mono', monospace;
+  letter-spacing: 0.5px;
+}
 
-.hack { background: linear-gradient(#116c16 0%, #90daa4 100%); }
-.security { background: linear-gradient(#a1090e 0%, #fad0c4 100%); }
-.data { background: linear-gradient(#d4e20f 0%, #e1f08b 100%); }
-.web { background: linear-gradient(#4c4b4b 0%, #b7b5b5 100%); }
-.game { background: linear-gradient(#e6060d 0%, #fad0c4 100%); }
-.women { background: linear-gradient(#1d7bb6 0%, #9dabdd 100%); }
+.hack     { background: linear-gradient(180deg, #19B481 0%, rgba(255,255,255,0.4) 100%); border-color: #73C075; }
+.security { background: linear-gradient(180deg, #3B82F6 0%, rgba(255,255,255,0.4) 100%); border-color: #60A5FA; }
+.data     { background: linear-gradient(180deg, #EAB308 0%, rgba(255,255,255,0.4) 100%); border-color: #FACC15; }
+.web      { background: linear-gradient(180deg, #1b1f24 0%, rgba(255,255,255,0.4) 100%); border-color: #94A3B8; }
+.game     { background: linear-gradient(180deg, #187a31 0%, rgba(255,255,255,0.4) 100%); border-color: #37b057; }
+.comp     { background: linear-gradient(180deg, #7dbbd8 0%, rgba(255,255,255,0.4) 100%); border-color: #38BDF8; }
+
+img {
+  width: 100%;
+  height: auto;
+}
