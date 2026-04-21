@@ -5,6 +5,7 @@ import ACMBoard from "../../components/acm_board/acm_board";
 import UpcomingEvent from "../../components/upcoming_events/upcoming_events";
 
 import Header from "../../components/header/header";
+import ImageGallery from "../../components/image_gallery/image_gallery";
 
 function General() {
     return (
@@ -23,6 +24,9 @@ function General() {
                 <ACMBoard />
             </section>
             
+            <section id="gallery">
+                <ImageGallery />
+            </section>
         </div>
     );
 }

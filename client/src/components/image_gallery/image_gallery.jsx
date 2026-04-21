@@ -79,7 +79,7 @@ function ImageGallery({className ="", autoSwap = false, autoSwapTime = 3000}){
 
     return(
         <div className='gallery'>
-            <h1 className='gallery-title'>IMAGE GALLERY</h1>
+            <h1 className='gallery-title'>Image Gallery</h1>
             <img className='gallery-content' src={imageList[imageIndex].image} alt={imageList[imageIndex].altText} ref={imageRef}></img>
             <div className='carousel-controls'>
                 <button className='arrow-button' onClick={getPrev}>
