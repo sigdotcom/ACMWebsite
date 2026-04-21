@@ -1,6 +1,54 @@
 from django.db import models
 from django_mongodb_backend.fields import ObjectIdAutoField
 
+# Create your models here.
+
+### Key/Legend
+# v/ is a checkmark
+# X is a problem
+# TODO is To do
+# TBD is to be determined
+# R is for review
+# P is in progress. Follow with - Your Name if your working on it
+# these can be changed, just my notes for now
+
+# sigs v/
+#  name v/
+#  logo v/ - "image"
+#  meeting(s) v/
+#    day of week - v/
+#    time - clock v/
+#    repition - once every X weeks v/
+#    location v/
+#  description v/
+#  discord v/
+
+# officer(s) R - table of officers associated with a sig
+#  sig v/
+#  name v/
+#  position v/
+#  image R - link for officer image
+#  alumi? TBD
+
+# events v/
+#   sig v/
+#   date v/ - clocktime + day
+#   location v/
+#   description v/
+#   image v/
+#   title v/
+
+# Enum for days of the week
+class Weekday(models.TextChoices):
+    SUNDAY = "SUNDAY", "Sunday"
+    MONDAY = "MONDAY", "Monday"
+    TUESDAY = "TUESDAY", "Tuesday"
+    WEDNESDAY = "WEDNESDAY", "Wednesday"
+    THURSDAY = "THURSDAY", "Thursday"
+    FRIDAY = "FRIDAY", "Friday"
+    SATURDAY = "SATURDAY", "Saturday"
+
+
 def sig_image_path(instance, filename):
     # Generates: uploads/sigs/security/assets/filename.jpg
     return f'uploads/sigs/{instance.slug}/assets/{filename}'
@@ -34,6 +82,20 @@ class Sig(models.Model):
 
     description = models.TextField()
     meeting_time = models.CharField(max_length=100, blank=True)
+    meeting_day = models.CharField(max_length=11, choices=Weekday)
+    # every_x_weeks = models.CharField(max_length=1, default=1)
+    every_x_weeks = models.IntegerField(default=1)
+    # maybe models.IntegerChoices(1, 2, 3, 4, default=1, max_length=1)
+    meeting_location = models.CharField(max_length=100, blank=True)
+
+    ## URLS (and similar)
+    # *apparently* urlfield is CharField with url validation
+    discord_url = models.URLField(max_length=200, blank=True)
+    email = models.EmailField(max_length=100, blank=True)
+    git_url = models.URLField(max_length=200, blank=True)
+    #instragram/other socials? modify: discord_url = models.URLField(max_length=200, blank=True)
+
+
 
     # ImageField handles the full upload lifecycle:
     # 1. Receives the file from a form or API request
@@ -46,6 +108,20 @@ class Sig(models.Model):
     def __str__(self):
         return self.name
 
+class Officer(models.Model):
+    id = ObjectIdAutoField(primary_key=True)
+
+    sig = models.ForeignKey(Sig, related_name='officers', on_delete=models.CASCADE) # mostly gpted. Test functionality
+
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100, blank=True)
+    #       probably not this     vvvvvvvvvvv
+    image = models.ImageField(upload_to='officers/', blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 
 class Event(models.Model):
     id = ObjectIdAutoField(primary_key=True)
@@ -56,9 +132,13 @@ class Event(models.Model):
     # on_delete=CASCADE means if a sig is deleted, all its events are deleted too
     sig = models.ForeignKey(Sig, on_delete=models.CASCADE, null=True, blank=True)
 
+    discord_url = models.URLField(max_length=100, blank=True)
+    
     title = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateTimeField()
+    location = models.CharField(max_length=100, blank=True)
+
 
     # Same ImageField pattern as Sig — uploads go to the events/ subfolder in R2
     # MongoDB stores the path, Django reconstructs the full URL when accessed
