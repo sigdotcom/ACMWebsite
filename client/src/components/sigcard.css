@@ -12,10 +12,15 @@
     margin-top: 0.9375rem;
 }
 
+.sigcard p {
+  display: flex;
+  margin: 15px;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 3.5rem;
   padding: 40px;
   justify-content: center;
   max-width: 90vw;
