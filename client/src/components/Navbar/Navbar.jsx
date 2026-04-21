@@ -24,8 +24,8 @@ function Navbar() {
       {/* RIGHT SIDE */}
       <div className="navLinks">
         <ul className="links">
-          <li><a href="#events">Events</a></li>
           <li> <a href="#sigs">SIGs</a> </li>
+          <li><a href="#events">Events</a></li>
           <li><a href="#eboard">Eboard</a></li>
         </ul>
       </div>
