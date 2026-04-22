@@ -98,7 +98,7 @@ class Sig(models.Model):
     meeting_time = models.CharField(max_length=100, blank=True)
     meeting_day = models.CharField(max_length=11, choices=Weekday) 
     # every_x_weeks = models.CharField(max_length=1, default=1)
-    every_x_weeks = models.IntegerField( max_length=1, default=1) 
+    every_x_weeks = models.IntegerField(default=1) 
     # maybe models.IntegerChoices(1, 2, 3, 4, default=1, max_length=1)
     meeting_location = models.CharField(max_length=100, blank=True)
 
