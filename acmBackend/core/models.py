@@ -95,7 +95,8 @@ class Sig(models.Model):
     slug = models.SlugField(unique=True)
 
     description = models.TextField()
-    meeting_time = models.CharField(max_length=100, blank=True)
+    meeting_time_start = models.CharField(max_length=100, blank=True)
+    meeting_time_end = models.CharField(max_length=100, blank=True)
     meeting_day = models.CharField(max_length=11, choices=Weekday)
     # every_x_weeks = models.CharField(max_length=1, default=1)
     every_x_weeks = models.IntegerField(default=1)
