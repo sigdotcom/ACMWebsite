@@ -2,8 +2,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FormParser
-from core.models import Event
-from .serializers import EventSerializer
+from rest_framework import viewsets
+from core.models import Sig, Officer, Event
+from .serializers import SigSerializer, OfficerSerializer, EventSerializer
 
 class EventImageUploadView(APIView):
     # MultiPartParser handles multipart/form-data requests
@@ -48,3 +49,19 @@ class EventImageUploadView(APIView):
             {'image_url': event.image.url},
             status=status.HTTP_200_OK
         )
+    
+
+#Viewset for the Sig class
+class SigViewSet(viewsets.ModelViewSet):
+    queryset = Sig.objects.all()
+    serializer_class = SigSerializer
+
+#Viewset for the Officer class
+class OfficerViewSet(viewsets.ModelViewSet):
+    queryset = Officer.objects.all()
+    serializer_class = OfficerSerializer
+
+#Viewset for the Event class
+class EventViewSet(viewsets.ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer

@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import SigViewSet, EventViewSet, EventImageUploadView
+from .views import SigViewSet, OfficerViewSet, EventViewSet, EventImageUploadView
 
 # DefaultRouter automatically generates standard REST routes for each ViewSet
 # Registering EventViewSet under 'events' produces:
@@ -8,6 +8,7 @@ from .views import SigViewSet, EventViewSet, EventImageUploadView
 #   GET  /api/events/{id}/    → retrieve one event by ID
 router = DefaultRouter()
 router.register(r'sigs', SigViewSet, basename='sig')
+router.register(r'officers', OfficerViewSet, basename='officer')
 router.register(r'events', EventViewSet, basename='event')
 
 urlpatterns = [
