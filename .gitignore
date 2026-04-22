@@ -24,4 +24,38 @@ dist-ssr
 *.sw?
 .venv
 .env
+
+# Python
+__pycache__/
+# Environment variables — never commit credentials
+.env
+
+# Python cache files
+__pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.pycache
+
+# Virtual environment — each member creates their own locally
+.venv/
+venv/
+env/
+
+# Django
+*.log
+db.sqlite3
+
+# Mac system files
+.DS_Store
+
+# VS Code / editor settings
+.vscode/
+.idea/
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
