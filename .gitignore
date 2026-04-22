@@ -26,7 +26,7 @@ dist-ssr
 .env
 
 # Python
-__pycache__/
+__pycache__
 # Environment variables — never commit credentials
 .env
 
