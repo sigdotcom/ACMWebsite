@@ -153,6 +153,9 @@ AWS_QUERYSTRING_AUTH = False
 # Optional but good practice — organize uploads into subfolders
 AWS_LOCATION = "uploads"
 
+# Use HTTPS for all generated public URLs from Cloudflare R2
+AWS_S3_URL_PROTOCOL = 'https:'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
