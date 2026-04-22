@@ -10,7 +10,9 @@ function Navbar() {
     <nav className="navbar">
       {/* LEFT SIDE */}
       <div className="nav-left">
-        <img src={logo} alt="logo" className="nav-logo"/>
+        <a href="#">
+          <img src={logo} alt="acm general logo" className="nav-logo"/>
+        </a>
         <div className="logo-text">
           <a href="#" className="acmLogo"> Missouri S&T ACM </a>
           <span className="tagline"> Powered by <i>the future</i></span>
