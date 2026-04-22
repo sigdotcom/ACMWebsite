@@ -144,7 +144,7 @@ class Event(models.Model):
     # on_delete=CASCADE means if a sig is deleted, all its events are deleted too
     sig = models.ForeignKey(Sig, on_delete=models.CASCADE, null=True, blank=True)
 
-    discord_url = models.URLField(max_length=100, blank=True)
+    url = models.URLField(max_length=100, blank=True)
     registrationLink = models.URLField(max_length=200, blank=True)
     contact = models.EmailField(max_length=100, blank=True)
 
