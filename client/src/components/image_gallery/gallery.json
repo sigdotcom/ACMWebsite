@@ -1,14 +1,14 @@
 [
     {
-        "image": "src/assets/acm-logo.png",
+        "image": "src/assets/demo-img1.jpg",
         "altText": "the S&T ACM logo"
     },
     {
-        "image": "src/assets/ben_sullins.png",
+        "image": "src/assets/demo_img2.jpg",
         "altText": "Ben Sullins"
     },
     {
-        "image": "src/assets/dheeraj_m.png",
+        "image": "src/assets/demo-img3.jpg",
         "altText": "Dheeraj M"
     },
     {

@@ -1,5 +1,6 @@
 from django.db import models
 from django_mongodb_backend.fields import ObjectIdAutoField
+from enum import Enum
 
 # Create your models here.
 
@@ -62,7 +63,6 @@ class Weekday(models.TextChoices):
     FRIDAY = "FRIDAY", "Friday"
     SATURDAY = "SATURDAY", "Saturday"
 
-
 def sig_image_path(instance, filename):
     # Generates: uploads/sigs/security/assets/filename.jpg
     return f'uploads/sigs/{instance.slug}/assets/{filename}'
@@ -95,11 +95,12 @@ class Sig(models.Model):
     slug = models.SlugField(unique=True)
 
     description = models.TextField()
+
     meeting_time_start = models.CharField(max_length=100, blank=True)
     meeting_time_end = models.CharField(max_length=100, blank=True)
     meeting_day = models.CharField(max_length=11, choices=Weekday)
     # every_x_weeks = models.CharField(max_length=1, default=1)
-    every_x_weeks = models.IntegerField(default=1)
+    every_x_weeks = models.IntegerField(default=1) 
     # maybe models.IntegerChoices(1, 2, 3, 4, default=1, max_length=1)
     meeting_location = models.CharField(max_length=100, blank=True)
 
@@ -119,7 +120,8 @@ class Sig(models.Model):
     # upload_to= sets the subfolder inside the bucket for this model's images
     # blank=True means a sig can exist without an image
     image = models.ImageField(upload_to='sigs/', blank=True)
-
+    
+    
     def __str__(self):
         return self.name
 
@@ -132,6 +134,7 @@ class Officer(models.Model):
     position = models.CharField(max_length=100, blank=True)
     #       probably not this     vvvvvvvvvvv
     image = models.ImageField(upload_to='officers/', blank=True)
+
 
     def __str__(self):
         return self.name
@@ -164,5 +167,6 @@ class Event(models.Model):
     # Uploads go to the attachments/ subfolder in R2
     attachment = models.FileField(upload_to='attachments/', blank=True)
 
+    
     def __str__(self):
         return self.title
