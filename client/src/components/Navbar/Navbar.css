@@ -7,13 +7,17 @@
 
 /* NAVBAR CONTAINER */
 .navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   width: 100%;
   padding: 15px 20px;
-  padding-bottom: 0;
   box-sizing: border-box;
 
   /* background: #02011D; */
@@ -31,7 +35,7 @@
 
 /* LOGO IMAGE (if you add one later) */
 .nav-logo {
-  height: 45px;
+  height: 70px;
   width: auto;
 }
 
@@ -64,21 +68,6 @@ html {
 section {
     scroll-margin-top: 80px;
 }
-
-
-/*HAMBURGER MENU*/
-.menut-toggle{
-    display:none;
-    font-size: 28px;
-    color: white;
-    cursor: pointer;
-}
-
-
-
-
-
-
 
 /* RIGHT SIDE NAV LINKS */
 .navLinks {
@@ -116,30 +105,85 @@ section {
 /* li { margin: 0 20px; }  <-- delete this */
 
 
-/* MEDIA QUERIES */
+/* Hide hamburger on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 48px;
+  color: white;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
-    /* stacking eveything vertically */
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-    }
+  .links li a {
+    background: #02011D; /* Subtle white tint */
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 100%;               /* Makes the button full width */
+    text-align: right;         /* Keeps text aligned to your hamburger side */
+    display: block;
+  }
 
-    /* logo + text */
-    .nav-left {
-        justify-content: center;
-        text-align: center;
-    }
+  .links li a:hover {
+    background: #070620; /* Highlight on tap */
+  }
+  .navbar {
+    flex-wrap: wrap; /* allows links to drop below */
+    padding: 10px 20px;
+  }
 
-    /* links go underneath */
-    .navLinks {
-        width: 100%;
-        margin-top: 10px;
-    }
+  /* show hamburger */
+  .menu-toggle {
+    display: block;
+  }
 
-    /* stack links vertically  */
-    .links {
-        flex-direction: none;
-        align-items: center;
-        gap: 10px;
-    }
+  /* hide links by default on mobile */
+  .navLinks {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* show links when open */
+  .navLinks.open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    width: 100%;
+  }
+}
+/* iPhone 14 Pro Max and smaller (Progressive Scaling) */
+@media (max-width: 480px) {
+  .nav-logo {
+    height: 60px; /* Scale down logo image */
+  }
+
+  .acmLogo {
+    font-size: 25px; /* Smaller Brand Title */
+  }
+
+  .tagline {
+    font-size: 12px; /* Smaller Tagline */
+    margin-top: 5px;
+  }
+
+  .menu-toggle {
+    font-size: 40px; /* Prevent the hamburger from being massive */
+  }
+}
+
+/* Very Small Devices (Under 350px) */
+@media (max-width: 350px) {
+  .acmLogo {
+    font-size: 18px;
+  }
+  
+  .tagline {
+    display: none; /* Hide tagline entirely if it still breaks the layout */
+  }
 }

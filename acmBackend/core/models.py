@@ -39,6 +39,20 @@ from enum import Enum
 #   image v/
 #   title v/
 
+# Events json format
+# {
+#     "title": "string",             # v/
+#     "month": "string",             # R
+#     "day": "string",               # R
+#     "date": "MM/DD/YYYY",          # R, v/
+#     "time": "string",              # v/
+#     "location": "string",          # v/
+#     "contact": "string",           # v/
+#     "description": "string",       # v/
+#     "posterImage": "string",       # v/
+#     "registrationLink": "string"   # v/
+# }
+
 # Enum for days of the week
 class Weekday(models.TextChoices):
     SUNDAY = "SUNDAY", "Sunday"
@@ -123,8 +137,6 @@ class Officer(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class Event(models.Model):
     id = ObjectIdAutoField(primary_key=True)
 
@@ -134,8 +146,10 @@ class Event(models.Model):
     # on_delete=CASCADE means if a sig is deleted, all its events are deleted too
     sig = models.ForeignKey(Sig, on_delete=models.CASCADE, null=True, blank=True)
 
-    discord_url = models.URLField(max_length=100, blank=True)
-    
+    url = models.URLField(max_length=100, blank=True)
+    registrationLink = models.URLField(max_length=200, blank=True)
+    contact = models.EmailField(max_length=100, blank=True)
+
     title = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateTimeField()

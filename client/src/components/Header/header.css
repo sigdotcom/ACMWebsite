@@ -10,6 +10,13 @@
 
      <img src={tempHeader} alt="meeting" width="100" height="600"></img>
 */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* This prevents the 'slipping' look if content is too wide */
+}
+
 
 
 .header-container {
@@ -17,14 +24,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  /* padding: 10px; */
-  /* margin: 20px; */
   margin-top: 0;
   padding-top: 0;
   justify-content: center;
 
   width: 100%;
   height: 90vh;
+  padding-top: 45px;
   font-family: 'Victor Mono', monospace;
   box-sizing: border-box;
 }
@@ -37,6 +43,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 1.25rem;
+    
     justify-content: flex-end;
     box-sizing: border-box;
 
