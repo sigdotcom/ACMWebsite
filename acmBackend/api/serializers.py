@@ -1,35 +1,31 @@
 from rest_framework import serializers
-from core.models import Sig, Event
+from core.models import Sig, Officer, Event
 
+#Serializer for Officer class
+class OfficerSerializer(serializers.ModelSerializer):
+    id = serializers.CharField(source='_id', read_only=True)
+    class Meta:
+        model = Officer
+        fields = '__all__'
+
+#Serializer for Sig class
 class SigSerializer(serializers.ModelSerializer):
+    id = serializers.CharField(source='_id', read_only=True)
+    officers = OfficerSerializer(many=True, read_only=True)
     class Meta:
         model = Sig
-        fields = ['id', 'name', 'slug']
+        fields = '__all__'
 
-
+#Serializer for Event class
+#Uses Slug to represent Sig so it can be easily accessed without needing id?
 class EventSerializer(serializers.ModelSerializer):
-    # SerializerMethodField lets us define a custom method to compute a field's value
-    # We use this instead of a plain field because event.image stores only a relative
-    # file path in MongoDB — we need to call event.image.url to get the full R2 URL
-    image_url = serializers.SerializerMethodField()
-
-    # Nesting SigSerializer here means the API response includes the full sig object
-    # instead of just a raw MongoDB ObjectId
-    # read_only=True means this field is only used for outgoing responses,
-    # not for incoming data when creating or updating an event
-    sig = SigSerializer(read_only=True)
-
+    id = serializers.CharField(source='_id', read_only=True)
+    Sig = serializers.SlugRelatedField (
+        slug_field = 'slug',
+        queryset = Sig.objects.all(),
+        allow_null = True,
+        required = False
+    )
     class Meta:
         model = Event
-        fields = ['id', 'title', 'description', 'date', 'image_url', 'sig']
-
-    def get_image_url(self, obj):
-        # obj is the Event instance being serialized
-        # obj.image is falsy if no image has been uploaded yet
-        # obj.image.url asks django-storages to construct the full public URL
-        # by combining AWS_S3_CUSTOM_DOMAIN with the stored file path
-        # Example: "uploads/events/cybersec.jpg"
-        # →        "https://pub-<hash>.r2.dev/uploads/events/cybersec.jpg"
-        if obj.image:
-            return obj.image.url
-        return None
+        fields = '__all__'

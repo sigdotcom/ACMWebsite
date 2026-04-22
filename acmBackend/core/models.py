@@ -1,5 +1,6 @@
 from django.db import models
 from django_mongodb_backend.fields import ObjectIdAutoField
+from enum import Enum
 
 # Create your models here.
 
@@ -38,6 +39,20 @@ from django_mongodb_backend.fields import ObjectIdAutoField
 #   image v/
 #   title v/
 
+# Events json format
+# {
+#     "title": "string",             # v/
+#     "month": "string",             # R
+#     "day": "string",               # R
+#     "date": "MM/DD/YYYY",          # R, v/
+#     "time": "string",              # v/
+#     "location": "string",          # v/
+#     "contact": "string",           # v/
+#     "description": "string",       # v/
+#     "posterImage": "string",       # v/
+#     "registrationLink": "string"   # v/
+# }
+
 # Enum for days of the week
 class Weekday(models.TextChoices):
     SUNDAY = "SUNDAY", "Sunday"
@@ -47,7 +62,6 @@ class Weekday(models.TextChoices):
     THURSDAY = "THURSDAY", "Thursday"
     FRIDAY = "FRIDAY", "Friday"
     SATURDAY = "SATURDAY", "Saturday"
-
 
 def sig_image_path(instance, filename):
     # Generates: uploads/sigs/security/assets/filename.jpg
@@ -82,9 +96,9 @@ class Sig(models.Model):
 
     description = models.TextField()
     meeting_time = models.CharField(max_length=100, blank=True)
-    meeting_day = models.CharField(max_length=11, choices=Weekday)
+    meeting_day = models.CharField(max_length=11, choices=Weekday) 
     # every_x_weeks = models.CharField(max_length=1, default=1)
-    every_x_weeks = models.IntegerField(default=1)
+    every_x_weeks = models.IntegerField(default=1) 
     # maybe models.IntegerChoices(1, 2, 3, 4, default=1, max_length=1)
     meeting_location = models.CharField(max_length=100, blank=True)
 
@@ -105,6 +119,7 @@ class Sig(models.Model):
     # blank=True means a sig can exist without an image
     image = models.ImageField(upload_to='sigs/', blank=True)
 
+   
     def __str__(self):
         return self.name
 
@@ -118,10 +133,9 @@ class Officer(models.Model):
     #       probably not this     vvvvvvvvvvv
     image = models.ImageField(upload_to='officers/', blank=True)
 
+
     def __str__(self):
         return self.name
-
-
 
 class Event(models.Model):
     id = ObjectIdAutoField(primary_key=True)
@@ -132,8 +146,10 @@ class Event(models.Model):
     # on_delete=CASCADE means if a sig is deleted, all its events are deleted too
     sig = models.ForeignKey(Sig, on_delete=models.CASCADE, null=True, blank=True)
 
-    discord_url = models.URLField(max_length=100, blank=True)
-    
+    url = models.URLField(max_length=100, blank=True)
+    registrationLink = models.URLField(max_length=200, blank=True)
+    contact = models.EmailField(max_length=100, blank=True)
+
     title = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateTimeField()
@@ -149,5 +165,6 @@ class Event(models.Model):
     # Uploads go to the attachments/ subfolder in R2
     attachment = models.FileField(upload_to='attachments/', blank=True)
 
+    
     def __str__(self):
         return self.title

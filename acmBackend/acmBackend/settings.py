@@ -41,6 +41,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'core.apps.CoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,8 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'core',
+    'acmBackend',
     'api',
+    
 ]
 
 MIDDLEWARE = [
@@ -151,6 +153,9 @@ AWS_QUERYSTRING_AUTH = False
 # Optional but good practice — organize uploads into subfolders
 AWS_LOCATION = "uploads"
 
+# Use HTTPS for all generated public URLs from Cloudflare R2
+AWS_S3_URL_PROTOCOL = 'https:'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -168,4 +173,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
