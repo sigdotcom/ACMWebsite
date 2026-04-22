@@ -105,6 +105,7 @@ class Sig(models.Model):
     # blank=True means a sig can exist without an image
     image = models.ImageField(upload_to='sigs/', blank=True)
 
+   
     def __str__(self):
         return self.name
 
@@ -117,6 +118,7 @@ class Officer(models.Model):
     position = models.CharField(max_length=100, blank=True)
     #       probably not this     vvvvvvvvvvv
     image = models.ImageField(upload_to='officers/', blank=True)
+
 
     def __str__(self):
         return self.name
@@ -149,5 +151,6 @@ class Event(models.Model):
     # Uploads go to the attachments/ subfolder in R2
     attachment = models.FileField(upload_to='attachments/', blank=True)
 
+    
     def __str__(self):
         return self.title
