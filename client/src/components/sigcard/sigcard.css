@@ -20,13 +20,14 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 3.5rem;
-  padding: 40px;
+  gap: 2rem;           /* Slightly smaller gap for mobile */
+  padding: 20px;       /* Reduced from 40px to prevent squeezing */
   justify-content: center;
-  max-width: 90vw;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+  align-items: center; /* Added to ensure vertical/horizontal alignment */
+  width: 100%;         /* Let it take the full width */
+  max-width: 1200px;   
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .card-wrapper {
@@ -119,7 +120,9 @@
 .game     { background: linear-gradient(180deg, #187a31 0%, rgba(255,255,255,0.4) 100%); border-color: #37b057; }
 .comp     { background: linear-gradient(180deg, #7dbbd8 0%, rgba(255,255,255,0.4) 100%); border-color: #38BDF8; }
 
-img {
+.sig-box img {
   width: 100%;
-  height: auto;
+  height: 200px;
+  object-fit: contain;
+  flex: 1;
 }
