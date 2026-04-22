@@ -157,3 +157,33 @@ section {
     width: 100%;
   }
 }
+/* iPhone 14 Pro Max and smaller (Progressive Scaling) */
+@media (max-width: 480px) {
+  .nav-logo {
+    height: 60px; /* Scale down logo image */
+  }
+
+  .acmLogo {
+    font-size: 25px; /* Smaller Brand Title */
+  }
+
+  .tagline {
+    font-size: 12px; /* Smaller Tagline */
+    margin-top: 5px;
+  }
+
+  .menu-toggle {
+    font-size: 40px; /* Prevent the hamburger from being massive */
+  }
+}
+
+/* Very Small Devices (Under 350px) */
+@media (max-width: 350px) {
+  .acmLogo {
+    font-size: 18px;
+  }
+  
+  .tagline {
+    display: none; /* Hide tagline entirely if it still breaks the layout */
+  }
+}
