@@ -59,7 +59,7 @@ html, body {
 }
 
 .typewriter{
-    font-style: italic;
+    font-style: 'Victor Mono' ,italic;
 }
 
 .header-content p {

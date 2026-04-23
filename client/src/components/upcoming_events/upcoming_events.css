@@ -24,7 +24,7 @@
 .carousel-wrapper {
     display: flex;
     justify-content: center;
-    width: 85vw;
+    width: 80vw;
 }
 
 .carousel-window {
@@ -46,7 +46,7 @@
 .event-card {
     box-sizing: border-box;
     width: 23.75rem;
-    min-width: 23.75rem;
+    min-width: 19.75rem;
     background-color: #0d0d12;
     border-radius: 1.5rem;
     padding: 1.8rem;

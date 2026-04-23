@@ -16,7 +16,7 @@ function Header() {
     <div className="header-container">
         <div className="header-content">
             <h1>
-                Powered by <b><TypeWriter className="typewriter" words={['The Future', 'Coffee', 'React', 'Love']}/></b>
+                Powered by <i><b><TypeWriter className="typewriter" words={['The Future', 'Coffee', 'React', 'Love']}/></b></i>
             </h1>
 
             <p>We are the Association for Computing Machinery at Missouri S&T. Our goal is to enrich the college experience and foster the next generation of innovators by hosting talks, competitions, and workshops. We take any and all majors interested in what we do. Checkout our SIGs to find out what might spark your interest!</p>

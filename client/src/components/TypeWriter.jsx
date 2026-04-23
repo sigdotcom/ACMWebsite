@@ -34,7 +34,7 @@ function TypeWriter({ words = [], typeCursorClassName = "", className = "", typi
 
         return () => clearTimeout(timeout); 
     }, [displayText, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseTime]);
-    return <span className = {className}>{displayText}<span className = {typeCursorClassName}>|</span></span>;
+    return <i><b><span className = {className}>{displayText}<span className = {typeCursorClassName}>|</span></span></b></i>;
 
 }
 
