@@ -9,7 +9,7 @@ admin.site.index_title = "Welcome to the ACM Dashboard" # Sets the welcome messa
 
 @admin.register(Sig) # Tells the admin site to show the Sig model 
 class SigAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'meeting_time') # Sets the columns you see in the list 
+    list_display = ('name', 'slug', 'meeting_time_start', 'meeting_time_end') # Sets the columns you see in the list 
     search_fields = ('name', 'slug') # Adds a search bar for names and slugs 
     prepopulated_fields = {'slug': ('name',)}  # Automatically fills the slug as you type the name
     def get_queryset(self, request): # Controls which SIG records are visible to the user 
